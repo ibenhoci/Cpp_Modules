@@ -5,7 +5,10 @@ Object_Files = $(Source_Files:.cpp=.o)
 all: $(Name)
 
 $(Name): $(Object_Files)
-	g++ -Wall -Wextra -Werror -std=c++98 -pedantic $(Object_Files) -o $(Name)
+	g++ $(Object_Files) -o $(Name)
+
+%.o: %.cpp
+	g++ -Wall -Wextra -Werror -std=c++98 -pedantic -c $< -o $@
 
 clean:
 	rm -f $(Object_Files)
